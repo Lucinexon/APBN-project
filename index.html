@@ -124,7 +124,7 @@ body.printing .bggrid{display:none}
 .sr-empty{padding:10px 12px;color:var(--mut);font-size:.9rem}
 
 /* ============ LAYOUT ============ */
-.layout{position:relative;z-index:1;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
+.layout{position:relative;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
   padding:20px 18px;max-width:1420px;margin:0 auto}
 .sidebar{position:sticky;top:74px;height:calc(100vh - 94px);overflow:auto;display:flex;flex-direction:column;gap:14px;
   padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
@@ -490,15 +490,17 @@ body.modal-open{overflow:hidden}
 .pager{display:flex;justify-content:space-between;gap:10px;margin-top:24px;flex-wrap:wrap}
 
 /* ============ RESPONSIVE ============ */
-@media(max-width:1040px){.xptx{display:none}}
 @media(max-width:920px){
+  body.nav-open{overflow:hidden}
+  body.nav-open .btt{display:none!important}
   .layout{grid-template-columns:1fr}
-  .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(320px,86vw);z-index:130;transform:translateX(-104%);
-    transition:transform .25s;height:100%;border-right:2px solid var(--line);background:var(--bg2);padding:16px}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(320px,86vw);z-index:140;transform:translateX(-104%);
+    transition:transform .25s;height:100%;border-right:2px solid var(--line);background:var(--bg2);padding:16px;box-shadow:6px 0 24px rgba(0,0,0,.6)}
   body.nav-open .sidebar{transform:none}
+  .side-close{display:inline-flex}
   #menuBtn{display:inline-flex}
   .sec-chip{display:none}
-}
+  }
 @media(max-width:680px){
   .hud{display:none}
   .topbar{padding:8px 10px;gap:8px}
