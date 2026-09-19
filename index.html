@@ -124,7 +124,293 @@ body.printing .bggrid{display:none}
 .sr-empty{padding:10px 12px;color:var(--mut);font-size:.9rem}
 
 /* ============ LAYOUT ============ */
-.layout{position:relative;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.main,
+.screen,
+.layout > *,
+.grid2 > *,
+.grid3 > *,
+.grid4 > *,
+.duo > *,
+.trow > *,
+.tiles > *,
+.tiers > * {
+  min-width: 0;
+}
+
+/* JavaScript navigation depends on this state */
+.screen {
+  display: none;
+  width: 100%;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Prevent long content from expanding the grid */
+.main {
+  width: 100%;
+  min-width: 0;
+}
+
+.layout {
+  width: 100%;
+  min-width: 0;
+}
+
+.panel,
+.card,
+.stat,
+.lane,
+.tnode,
+.co,
+.tblwrap {
+  max-width: 100%;
+}
+
+/* Keep headings and navigation text inside their containers */
+.blk-title,
+.sec-title,
+.sec-sub,
+.nav-tx,
+.nav-tx b,
+.nav-tx span,
+.card,
+.cp,
+.co,
+.summary {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Sidebar buttons must remain clickable and visually selected */
+.navit {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 48px;
+  flex: 0 0 auto;
+}
+  
+.navit[aria-current="true"] {
+  position: relative;
+  z-index: 1;
+
+.nav-pv {
+  min-width: 48px;
+}
+  
+/* Mobile navigation */
+@media (max-width: 920px) {
+  .layout {
+    display: block;
+    padding: 14px 12px;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .sidebar {
+    width: min(320px, 88vw);
+    max-width: 320px;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body.nav-open .sidebar {
+    box-shadow: 8px 0 0 rgba(5, 8, 28, .45);
+  }
+
+  .scrim {
+    z-index: 125;
+  }
+
+  .sidebar {
+    z-index: 130;
+  }
+
+  .topbar {
+    z-index: 140;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    font-size: 15px;
+  }
+
+  .topbar {
+    align-items: center;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .brand-tx {
+    min-width: 0;
+  }
+
+  .brand-t,
+  .bsub {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tools {
+    flex: 0 0 auto;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .tb {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+  }
+
+  .searchwrap {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    order: 10;
+  }
+
+  #search {
+    min-height: 40px;
+    font-size: 16px;
+  }
+
+  .layout {
+    padding: 12px 8px;
+  }
+
+  .panel {
+    padding: 13px 11px;
+  }
+
+  .sec-head {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .sec-head > span:not(.sec-ic) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .sec-title {
+    font-size: clamp(13px, 5vw, 18px);
+  }
+
+  .sec-sub {
+    font-size: 10px;
+    letter-spacing: .5px;
+  }
+
+  .blk-title {
+    flex: 1 1 160px;
+    font-size: 14px;
+  }
+
+  .blk-check {
+    margin-left: auto;
+  }
+
+  .grid2,
+  .grid3,
+  .grid4,
+  .duo,
+  .trow {
+    grid-template-columns: 1fr;
+  }
+
+  .grid2,
+  .grid3,
+  .grid4 {
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 25px 12px 20px;
+  }
+
+  .hero-kicker,
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-size: clamp(22px, 10vw, 38px);
+  }
+
+  .hero .btn,
+  .toolrow .btn,
+  .side-foot .btn {
+    width: 100%;
+  }
+
+  .toolrow {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .formula {
+    overflow-x: auto;
+    font-size: 9px;
+    line-height: 1.8;
+  }
+
+  .bar-row {
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .bar-row .bl {
+    flex: 1 1 100%;
+  }
+
+  .bar-row .bv {
+    flex: 0 0 auto;
+  }
+
+  .fstep {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .fc-in {
+    height: min(380px, 72vh);
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .mbody {
+    padding: 13px;
+  }
+  }
+  .layout{position:relative;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
   padding:20px 18px;max-width:1420px;margin:0 auto}
 .sidebar{position:sticky;top:74px;height:calc(100vh - 94px);overflow:auto;display:flex;flex-direction:column;gap:14px;
   padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
