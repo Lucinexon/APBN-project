@@ -124,14 +124,10 @@ body.printing .bggrid{display:none}
 .sr-empty{padding:10px 12px;color:var(--mut);font-size:.9rem}
 
 /* ============ LAYOUT ============ */
-.layout{position:relative;z-index:1;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
+.layout{position:relative;display:grid;grid-template-columns:288px minmax(0,1fr);gap:0 22px;
   padding:20px 18px;max-width:1420px;margin:0 auto}
 .sidebar{position:sticky;top:74px;height:calc(100vh - 94px);overflow:auto;display:flex;flex-direction:column;gap:14px;
   padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
-.main{min-width:0}
-.screen{display:none;max-width:960px}
-.screen.active{display:block;animation:scrIn .3s steps(6)}
-@keyframes scrIn{from{opacity:0;transform:translateY(12px)}}
 .scrim{position:fixed;inset:0;z-index:125;background:rgba(4,7,22,.72);opacity:0;pointer-events:none;transition:opacity .2s}
 body.nav-open .scrim{opacity:1;pointer-events:auto}
 
